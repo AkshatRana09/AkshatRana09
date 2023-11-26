@@ -1,0 +1,596 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <title>Movie Design</title>
+</head>
+
+<body>
+    <style>
+        * {
+  margin: 0;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.navbar {
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  position: sticky;
+  top: 0;
+}
+
+.navbar-container {
+  display: flex;
+  align-items: center;
+  padding: 0 50px;
+  height: 100%;
+  color: white;
+  font-family: "Sen", sans-serif;
+}
+
+.logo-container {
+  flex: 1;
+}
+
+.logo {
+  font-size: 30px;
+  color: rgb(0,255,0);
+}
+
+.menu-container {
+  flex: 6;
+}
+
+.menu-list {
+  display: flex;
+  list-style: none;
+}
+
+.menu-list-item {
+  margin-right: 30px;
+}
+
+.menu-list-item.active {
+  font-weight: bold;
+}
+.profile-container {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.profile-text-container {
+  margin: 0 20px;
+}
+
+.profile-picture {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.toggle {
+  width: 40px;
+  height: 20px;
+  background-color: white;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.toggle-icon {
+  color: goldenrod;
+}
+
+.toggle-ball {
+  width: 18px;
+  height: 18px;
+  background-color: black;
+  position: absolute;
+  right: 1px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 1s ease all;
+}
+
+.sidebar {
+  width: 50px;
+  height: 100%;
+  background-color: black;
+  position: fixed;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 60px;
+}
+
+.left-menu-icon {
+  color: white;
+  font-size: 20px;
+  margin-bottom: 40px;
+}
+
+.container {
+  background-color: #151515;
+  min-height: calc(100vh - 50px);
+  color: white;
+}
+
+.content-container {
+  margin-left: 50px;
+}
+
+.featured-content {
+  width:180vh;
+  height: 50vh;
+  padding: 50px;
+}
+
+.featured-title {
+  width: 200px;
+}
+
+.featured-desc {
+  width: 500px;
+  color: lightgray;
+  margin-top: 275px;
+  margin-left: 30px;
+  font-family: 'Playfair Display SC', serif;
+  font-weight: bold;
+}
+
+.featured-button {
+  background-color: #4dbf00;
+  color: white;
+  padding: 10px 20px;
+  border-radius:10px;
+  border: none;
+  outline: none;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 50px;
+}
+
+.movie-list-container {
+  padding: 0 20px;
+}
+
+.movie-list-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.movie-list {
+  display: flex;
+  align-items: center;
+  height: 300px;
+  transform: translateX(0);
+  transition: all 1s ease-in-out;
+}
+
+.movie-list-item {
+  margin-right: 30px;
+  position: relative;
+}
+
+.movie-list-item:hover .movie-list-item-img {
+  transform: scale(1.2);
+  margin: 0 30px;
+  opacity: 0.5;
+}
+
+.movie-list-item:hover .movie-list-item-title,
+.movie-list-item:hover .movie-list-item-desc,
+.movie-list-item:hover .movie-list-item-button {
+  opacity: 1;
+}
+
+.movie-list-item-img {
+  transition: all 1s ease-in-out;
+  width: 270px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.movie-list-item-title {
+  background-color: #333;
+  padding: 0 10px;
+  font-size: 32px;
+  font-weight: bold;
+  position: absolute;
+  top: 10%;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.movie-list-item-desc {
+  background-color: #333;
+  padding: 10px;
+  font-size: 14px;
+  position: absolute;
+  top: 30%;
+  left: 50px;
+  width: 230px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.movie-list-item-button {
+  padding: 10px;
+  background-color: #4dbf00;
+  color: white;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  bottom: 20px;
+  left: 50px;
+  opacity: 0;
+  transition: 1s all ease-in-out;
+}
+
+.arrow {
+  font-size: 120px;
+  position: absolute;
+  top: 90px;
+  right: 0;
+  color: lightgray;
+  opacity: 0.5;
+  cursor: pointer;
+}
+
+.container.active {
+  background-color: white;
+}
+
+.movie-list-title.active {
+  color: black;
+}
+
+.navbar-container.active {
+  background-color: white;
+
+  color: black;
+}
+
+.sidebar.active{
+    background-color: white;
+}
+
+.left-menu-icon.active{
+    color: black;
+}
+
+.toggle.active{
+    background-color: black;
+}
+
+.toggle-ball.active{
+    background-color: white;
+    transform: translateX(-20px);
+}
+
+@media only screen and (max-width: 940px){
+    .menu-container{
+        display: none;
+    }
+}
+    </style>
+    <div class="navbar">
+        <div class="navbar-container">
+            <div class="logo-container">
+                <h1 class="logo">Tixnow</h1>
+            </div>
+            <div class="menu-container">
+                <ul class="menu-list">
+                    <li class="menu-list-item active">Home</li>
+                    <li class="menu-list-item">Movies</li>
+                    <li class="menu-list-item">Events</li>
+                    <li class="menu-list-item">Popular</li>
+                    <li class="menu-list-item">Trending</li>
+
+                </ul>
+            </div>
+            <div class="profile-container">
+                <img class="profile-picture" src="img/profile.jpg" alt="">
+                <div class="profile-text-container">
+                    <span class="profile-text">Profile</span>
+                    <i class="fas fa-caret-down"></i>
+                </div>
+                <div class="toggle">
+                    <i class="fas fa-moon toggle-icon"></i>
+                    <i class="fas fa-sun toggle-icon"></i>
+                    <div class="toggle-ball"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sidebar">
+        <i class="left-menu-icon fas fa-search"></i>
+        <i class="left-menu-icon fas fa-home"></i>
+        <i class="left-menu-icon fas fa-users"></i>
+        <i class="left-menu-icon fas fa-bookmark"></i>
+        <i class="left-menu-icon fas fa-tv"></i>
+        <i class="left-menu-icon fas fa-hourglass-start"></i>
+        <i class="left-menu-icon fas fa-shopping-cart"></i>
+    </div>
+    <div class="container">
+        <div class="content-container">
+            <div class="featured-content"
+                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('https://i.ytimg.com/vi/SAhlmquynBY/maxresdefault.jpg');">
+                
+                <p class="featured-desc">Fast and Furious X</p>
+                <a href="http://127.0.0.1:5500/guys.html"><button class="featured-button">Book Ticket</button></a>
+            </div>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">TRENDING MOVIES</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/dHTzLvViCfki3TPysrN1eFWt4g8kH81mTEQU754so4s/rs:fit:860:0:0/g:ce/aHR0cHM6Ly92YXJp/ZXR5LmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyMi8xMi9B/bmltYWwtZmlyc3Qt/bG9vay5qcGc_dz0x/MDAwJmg9NTYzJmNy/b3A9MQ" alt="">
+                            <span class="movie-list-item-title">Animal</span>
+                            <p class="movie-list-item-desc">This is the story of a son whose love for his father knows no bounds. As their bond begins to fracture, a chain of extraordinary events unfolds.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/8s-iw52eP67gZJqriyvJ5aWM000SwGQ3i7mR4WBlFOY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9nZWVr/aXJlbGFuZC5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMTkv/MDQvYXZlbmdlcnMt/ZW5kZ2FtZS1wb3N0/ZXItbGFuZHNjYXBl/LTEwMjR4NTc2Lmpw/Zw" alt="">
+                            <span class="movie-list-item-title">EndGame</span>
+                            <p class="movie-list-item-desc">After devastating events of 'Avengers: Infinity War,'the universe is in ruins.With the help of remaining allies, the Avengers assemble once more in order to undo Thanos' actions</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/todTeZOjb6MKQGHN30blmyldrorOgSykNwGX_1kCrNY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y2luZW1hdGVyaWFs/LmNvbS9wLzEzNngv/bnpyNmdobG4vdGFs/ay10by1tZS1icml0/aXNoLW1vdmllLXBv/c3Rlci1zbS5qcGc_/dj0xNjg5MDI5NTA4" alt="">
+                            <span class="movie-list-item-title">Talk To Me</span>
+                            <p class="movie-list-item-desc">When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/nBGVRyZIu5OYhBBFrnlr18LVHveMUEULQ9QC0xRIuIE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90d2lz/dGFydGljbGUuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDIy/LzEwL1NhbG1hbi1L/aGFuLVRpZ2VyLTMt/bmV3LXBvc3Rlci5q/cGc" alt="">
+                            <span class="movie-list-item-title">Tiger 3</span>
+                            <p class="movie-list-item-desc">Tiger and Zoya are back - to save the country and their family. This time it's personal.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button><a href="http://127.0.0.1:5500/guys.html"></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/696tsstomoVZsbNRUlzcgt1uzib24qlDfw2PKtIHFjE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5kaWFoZXJhbGQu/Y29tL0ltYWdlU3Rv/cmUvaW1hZ2VzL21v/dmllcy9tb3ZpZXMt/d2FsbHBhcGVycy9T/YW5qdS1Nb3ZpZS1M/YXRlc3QtU3RpbGxz/LS1Qb3N0ZXJzMS5q/cGc" alt="">
+                            <span class="movie-list-item-title">Sanju</span>
+                            <p class="movie-list-item-desc">Biopic of the controversial life of actor Sanjay Dutt: his film career, jail sentence, and personal life.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/wyc7L7bIHazcGaDBkTwhaJK0u1YSl0eGyywAEhP7eeY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/dGVhaHViLmlvL3Bo/b3Rvcy9mdWxsLzI3/OS0yNzk1NzQwX2Fq/YXktZGV2Z2FuLXNp/bmdoYW0tcG9zdGVy/LmpwZw" alt="">
+                            <span class="movie-list-item-title">Singham 3</span>
+                            <p class="movie-list-item-desc"> Uncompromising police chief Durai Singam battles against a criminal operation dealing in deadly toxic waste.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/89MJi6cnRTdRWuxfBw3V6f_4vtWpQBs2SFLxp8_srFo/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9ib2xs/eXdvb2RtYXNjb3Qu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIwLzAxL1NoZXJz/aGFhaC1Nb3ZpZS1Q/b3N0ZXItZTE1Nzkx/NTY5NTAxODYuanBn" alt="">
+                            <span class="movie-list-item-title">Shershah</span>
+                            <p class="movie-list-item-desc">Shershaah is the story of PVC awardee Indian soldier Capt. Vikram Batra, whose bravery and unflinching courage in chasing the Pakistani soldiers out of Indian territory</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">NEW MOVIE RELEASES</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/wyc7L7bIHazcGaDBkTwhaJK0u1YSl0eGyywAEhP7eeY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/dGVhaHViLmlvL3Bo/b3Rvcy9mdWxsLzI3/OS0yNzk1NzQwX2Fq/YXktZGV2Z2FuLXNp/bmdoYW0tcG9zdGVy/LmpwZw" alt="">
+                            <span class="movie-list-item-title">Singham 3</span>
+                            <p class="movie-list-item-desc">Uncompromising police chief Durai Singam battles against a criminal operation dealing in deadly toxic waste.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/todTeZOjb6MKQGHN30blmyldrorOgSykNwGX_1kCrNY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y2luZW1hdGVyaWFs/LmNvbS9wLzEzNngv/bnpyNmdobG4vdGFs/ay10by1tZS1icml0/aXNoLW1vdmllLXBv/c3Rlci1zbS5qcGc_/dj0xNjg5MDI5NTA4" alt="">
+                            <span class="movie-list-item-title">Talk to me</span>
+                            <p class="movie-list-item-desc">When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="data:image/jpeg;base64,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" alt="">
+                            <span class="movie-list-item-title">Deadpool 3</span>
+                            <p class="movie-list-item-desc">The untitled Deadpool film, commonly known as Deadpool 3, is an upcoming American superhero film based on the Marvel Comics character Deadpool.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQCNwpVk5t1H-_Rqh7-W5I-Xia_oUhwlIXl9Q&usqp=CAU" alt="">
+                            <span class="movie-list-item-title">Kung Fu Panda</span>
+                            <p class="movie-list-item-desc">Follow Po on his wide-eyed adventures in ancient China, whose love of kung fu is matched only by an insatiable appetite.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <span class="movie-list-item-title">Bad Boys 4</span>
+                            <img class="movie-list-item-img" src="data:image/jpeg;base64,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" alt="">
+                            <p class="movie-list-item-desc">An untitled fourth Bad Boys film is an upcoming American buddy cop action comedy film directed by Adil & Bilall.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/89MJi6cnRTdRWuxfBw3V6f_4vtWpQBs2SFLxp8_srFo/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9ib2xs/eXdvb2RtYXNjb3Qu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIwLzAxL1NoZXJz/aGFhaC1Nb3ZpZS1Q/b3N0ZXItZTE1Nzkx/NTY5NTAxODYuanBn" alt="">
+                            <span class="movie-list-item-title">Shershah</span>
+                            <p class="movie-list-item-desc">Shershaah is the story of PVC awardee Indian soldier Capt. Vikram Batra, whose bravery and unflinching courage in chasing the Pakistani soldiers out of Indian territory</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/dHTzLvViCfki3TPysrN1eFWt4g8kH81mTEQU754so4s/rs:fit:860:0:0/g:ce/aHR0cHM6Ly92YXJp/ZXR5LmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyMi8xMi9B/bmltYWwtZmlyc3Qt/bG9vay5qcGc_dz0x/MDAwJmg9NTYzJmNy/b3A9MQ" alt="">
+                            <span class="movie-list-item-title">Animal</span>
+                            <p class="movie-list-item-desc">This is the story of a son whose love for his father knows no bounds. As their bond begins to fracture, a chain of extraordinary events unfolds.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+            <div class="featured-content"
+                style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/f-2.jpg');">
+                <img class="featured-title" href="c:\Users\fun2b\OneDrive\Desktop\et00355125-kbeadkzxcv-landscape (1).avif" alt="">
+                <p class="featured-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
+                    deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
+                    minima voluptatibus incidunt. Accusamus, provident.</p>
+                    <a href="http://127.0.0.1:5500/guys.html"><button class="featured-button">Book Tickets</button></a>
+            </div>
+            <!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">TRENDING EVENTS</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-VGh1LCAzMCBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00365092-gsqsalnglx-portrait.jpg" alt="">
+                            <span class="movie-list-item-title">Mind Fool India Tour</span>
+                            <p class="movie-list-item-desc">With a career traversing Bollywood, music, and comedy, Vir Das has the experience of a lifetime in the entertainment industry under his belt.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCA5IERlYw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00335355-urvtjkhzjw-portrait.jpg" alt="">
+                            <span class="movie-list-item-title">With love, jaspreet</span>
+                            <p class="movie-list-item-desc">After 100 million views on youtube and an Amazon Prime Comedy special, back with a new show.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-TW9uLCAyNyBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00369125-pewtlgggfb-portrait.jpg" alt="">
+                            <span class="movie-list-item-title">Exposure</span>
+                            <p class="movie-list-item-desc">You are Professional & 𝗦𝗺𝗮𝗿𝘁 Photographer only if you have perfect idea on Photography basics.
+
+                                Hyderabad.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://assets-in.bmscdn.com/nmcms/events/banner/desktop/media-desktop-shaam-e-guftagu-0-2023-11-3-t-3-16-16.jpg" alt="">
+                            <span class="movie-list-item-title">Shaam E Guftagu</span>
+                            <p class="movie-list-item-desc">Shaam E Guftagu is one of the Most Prominent Event for all The Shayari Lover`s, People who loves Modern Age Relatable Shayari with the Punch of Humour!.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_400/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1700118656%2Fotff7afko0l7ai8w6bjh.jpg" alt="">
+                            <span class="movie-list-item-title">Chandigarh is Cooking</span>
+                            <p class="movie-list-item-desc">Amazing event conducted by Coke Studio at Chandigarh</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_320/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1700655661%2Fqhncuclxv9roid7vjwbh.jpg" alt="">
+                            <span class="movie-list-item-title">Banger Festival</span>
+                            <p class="movie-list-item-desc">Enjoy Music life.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_400/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1696682190%2Fmedh7tq88ndmqait4oam.jpg" alt="">
+                            <span class="movie-list-item-title">Jol Fest</span>
+                            <p class="movie-list-item-desc">Jol fest x Ravolution Music festival Tour 2nd to 6th Dec</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+            <div class="movie-list-container">
+                <h1 class="movie-list-title">NEW EVENT RELEASES</h1>
+                <div class="movie-list-wrapper">
+                    <div class="movie-list">
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_320/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1700655661%2Fqhncuclxv9roid7vjwbh.jpg" alt="">
+                            <span class="movie-list-item-title">Banger Festival</span>
+                            <p class="movie-list-item-desc">Enjoy Music Life.</p>
+                            <button class="movie-list-item-button">Watch</button>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_2000/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1700643341%2Fg13ebfuzld7t1n5p4fzp.png" alt="">
+                            <span class="movie-list-item-title">Paradox</span>
+                            <p class="movie-list-item-desc">Enjoy the performance one of the biggest singing sensation-Paradox..</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Watch</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-VGh1LCAzMCBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00365092-gsqsalnglx-portrait.jpg" alt="">
+                            <span class="movie-list-item-title">Mind Fool India tour</span>
+                            <p class="movie-list-item-desc">With a career traversing Bollywood, music, and comedy, Vir Das has the experience of a lifetime in the entertainment industry under his belt.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Watch</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-TW9uLCAyNyBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00369125-pewtlgggfb-portrait.jpg" alt="">
+                            <span class="movie-list-item-title">Exposure</span>
+                            <p class="movie-list-item-desc">You are Professional & 𝗦𝗺𝗮𝗿𝘁 Photographer only if you have perfect idea on Photography basics.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Watch</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_400/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1699604630%2Fv5uzxwlmn464ktp2rjea.jpg" alt="">
+                            <span class="movie-list-item-title">Afsana Khan-India Tour</span>
+                            <p class="movie-list-item-desc">Afsana Khan India tour at Pyramid Jalandhar.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Watch</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_320/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1693898778%2Fdrdufimsu1tiq9fjmcgq.jpg" alt="">
+                            <span class="movie-list-item-title">Echoes of Earth</span>
+                            <p class="movie-list-item-desc">Echoes of Earth is India's greenest festival and continue to be India's one-of-a-kind music and lifestyle event.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Watch</button></a>
+                        </div>
+                        <div class="movie-list-item">
+                            <img class="movie-list-item-img" src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCA5IERlYw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00335355-urvtjkhzjw-portrait.jpg" alt="">
+                            <span class="movie-list-item-title">With love,Jaspreet</span>
+                            <p class="movie-list-item-desc">After 100 million views on youtube and an Amazon Prime Comedy special, back with a new show.</p>
+                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Watch</button></a>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-right arrow"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const arrows = document.querySelectorAll(".arrow");
+const movieLists = document.querySelectorAll(".movie-list");
+
+arrows.forEach((arrow, i) => {
+  const itemNumber = movieLists[i].querySelectorAll("img").length;
+  let clickCounter = 0;
+  arrow.addEventListener("click", () => {
+    const ratio = Math.floor(window.innerWidth / 270);
+    clickCounter++;
+    if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
+      movieLists[i].style.transform = `translateX(${
+        movieLists[i].computedStyleMap().get("transform")[0].x.value - 300
+      }px)`;
+    } else {
+      movieLists[i].style.transform = "translateX(0)";
+      clickCounter = 0;
+    }
+  });
+
+  console.log(Math.floor(window.innerWidth / 270));
+});
+
+//TOGGLE
+
+const ball = document.querySelector(".toggle-ball");
+const items = document.querySelectorAll(
+  ".container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
+);
+
+ball.addEventListener("click", () => {
+  items.forEach((item) => {
+    item.classList.toggle("active");
+  });
+  ball.classList.toggle("active");
+});
+    </script>
+</body>
+
+</html>
