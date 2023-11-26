@@ -13,282 +13,6 @@
 </head>
 
 <body>
-    <style>
-        * {
-  margin: 0;
-}
-
-body {
-  font-family: "Roboto", sans-serif;
-}
-
-.navbar {
-  width: 100%;
-  height: 50px;
-  background-color: black;
-  position: sticky;
-  top: 0;
-}
-
-.navbar-container {
-  display: flex;
-  align-items: center;
-  padding: 0 50px;
-  height: 100%;
-  color: white;
-  font-family: "Sen", sans-serif;
-}
-
-.logo-container {
-  flex: 1;
-}
-
-.logo {
-  font-size: 30px;
-  color: #4dbf00;
-}
-
-.menu-container {
-  flex: 6;
-}
-
-.menu-list {
-  display: flex;
-  list-style: none;
-}
-
-.menu-list-item {
-  margin-right: 30px;
-}
-
-.menu-list-item.active {
-  font-weight: bold;
-}
-.profile-container {
-  flex: 2;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-.profile-text-container {
-  margin: 0 20px;
-}
-
-.profile-picture {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.toggle {
-  width: 40px;
-  height: 20px;
-  background-color: white;
-  border-radius: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  position: relative;
-}
-
-.toggle-icon {
-  color: goldenrod;
-}
-
-.toggle-ball {
-  width: 18px;
-  height: 18px;
-  background-color: black;
-  position: absolute;
-  right: 1px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: 1s ease all;
-}
-
-.sidebar {
-  width: 50px;
-  height: 100%;
-  background-color: black;
-  position: fixed;
-  top: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding-top: 60px;
-}
-
-.left-menu-icon {
-  color: white;
-  font-size: 20px;
-  margin-bottom: 40px;
-}
-
-.container {
-  background-color: #151515;
-  min-height: calc(100vh - 50px);
-  color: white;
-}
-
-.content-container {
-  margin-left: 50px;
-}
-
-.featured-content {
-  height: 50vh;
-  padding: 50px;
-}
-
-.featured-title {
-  width: 200px;
-}
-
-.featured-desc {
-  width: 500px;
-  color: lightgray;
-  margin: 30px 0;
-}
-
-.featured-button {
-  background-color: #4dbf00;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  border: none;
-  outline: none;
-  font-weight: bold;
-}
-
-.movie-list-container {
-  padding: 0 20px;
-}
-
-.movie-list-wrapper {
-  position: relative;
-  overflow: hidden;
-}
-
-.movie-list {
-  display: flex;
-  align-items: center;
-  height: 300px;
-  transform: translateX(0);
-  transition: all 1s ease-in-out;
-}
-
-.movie-list-item {
-  margin-right: 30px;
-  position: relative;
-}
-
-.movie-list-item:hover .movie-list-item-img {
-  transform: scale(1.2);
-  margin: 0 30px;
-  opacity: 0.5;
-}
-
-.movie-list-item:hover .movie-list-item-title,
-.movie-list-item:hover .movie-list-item-desc,
-.movie-list-item:hover .movie-list-item-button {
-  opacity: 1;
-}
-
-.movie-list-item-img {
-  transition: all 1s ease-in-out;
-  width: 270px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.movie-list-item-title {
-  background-color: #333;
-  padding: 0 10px;
-  font-size: 32px;
-  font-weight: bold;
-  position: absolute;
-  top: 10%;
-  left: 50px;
-  opacity: 0;
-  transition: 1s all ease-in-out;
-}
-
-.movie-list-item-desc {
-  background-color: #333;
-  padding: 10px;
-  font-size: 14px;
-  position: absolute;
-  top: 30%;
-  left: 50px;
-  width: 230px;
-  opacity: 0;
-  transition: 1s all ease-in-out;
-}
-
-.movie-list-item-button {
-  padding: 10px;
-  background-color: #4dbf00;
-  color: white;
-  border-radius: 10px;
-  outline: none;
-  border: none;
-  cursor: pointer;
-  position: absolute;
-  bottom: 20px;
-  left: 50px;
-  opacity: 0;
-  transition: 1s all ease-in-out;
-}
-
-.arrow {
-  font-size: 120px;
-  position: absolute;
-  top: 90px;
-  right: 0;
-  color: lightgray;
-  opacity: 0.5;
-  cursor: pointer;
-}
-
-.container.active {
-  background-color: white;
-}
-
-.movie-list-title.active {
-  color: black;
-}
-
-.navbar-container.active {
-  background-color: white;
-
-  color: black;
-}
-
-.sidebar.active{
-    background-color: white;
-}
-
-.left-menu-icon.active{
-    color: black;
-}
-
-.toggle.active{
-    background-color: black;
-}
-
-.toggle-ball.active{
-    background-color: white;
-    transform: translateX(-20px);
-}
-
-@media only screen and (max-width: 940px){
-    .menu-container{
-        display: none;
-    }
-}
-    </style>
     <div class="navbar">
         <div class="navbar-container">
             <div class="logo-container">
@@ -341,52 +65,46 @@ body {
                 <div class="movie-list-wrapper">
                     <div class="movie-list">
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="c:\Users\Akshat Rana\Desktop\CODE\Website booking\Movies\Animal-306x393.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">This is the story of a son whose love for his father knows no bounds. As their bond begins to fracture, a chain of extraordinary events unfold causing the son to undergo a remarkable transformation consumed by a thirst for vengeance.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/dHTzLvViCfki3TPysrN1eFWt4g8kH81mTEQU754so4s/rs:fit:860:0:0/g:ce/aHR0cHM6Ly92YXJp/ZXR5LmNvbS93cC1j/b250ZW50L3VwbG9h/ZHMvMjAyMi8xMi9B/bmltYWwtZmlyc3Qt/bG9vay5qcGc_dz0x/MDAwJmg9NTYzJmNy/b3A9MQ" alt="">
+                            <span class="movie-list-item-title">Animal</span>
+                            <p class="movie-list-item-desc">This is the story of a son whose love for his father knows no bounds. As their bond begins to fracture, a chain of extraordinary events unfolds.</p>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/2.jpeg" alt="">
-                            <span class="movie-list-item-title">Star Wars</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/8s-iw52eP67gZJqriyvJ5aWM000SwGQ3i7mR4WBlFOY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9nZWVr/aXJlbGFuZC5jb20v/d3AtY29udGVudC91/cGxvYWRzLzIwMTkv/MDQvYXZlbmdlcnMt/ZW5kZ2FtZS1wb3N0/ZXItbGFuZHNjYXBl/LTEwMjR4NTc2Lmpw/Zw" alt="">
+                            <span class="movie-list-item-title">EndGame</span>
+                            <p class="movie-list-item-desc">After devastating events of 'Avengers: Infinity War,'the universe is in ruins.With the help of remaining allies, the Avengers assemble once more in order to undo Thanos' actions</p>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/3.jpg" alt="">
-                            <span class="movie-list-item-title">Storm</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/todTeZOjb6MKQGHN30blmyldrorOgSykNwGX_1kCrNY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9jZG4u/Y2luZW1hdGVyaWFs/LmNvbS9wLzEzNngv/bnpyNmdobG4vdGFs/ay10by1tZS1icml0/aXNoLW1vdmllLXBv/c3Rlci1zbS5qcGc_/dj0xNjg5MDI5NTA4" alt="">
+                            <span class="movie-list-item-title">Talk To Me</span>
+                            <p class="movie-list-item-desc">When a group of friends discover how to conjure spirits using an embalmed hand, they become hooked on the new thrill.</p>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/4.jpg" alt="">
-                            <span class="movie-list-item-title">1917</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/nBGVRyZIu5OYhBBFrnlr18LVHveMUEULQ9QC0xRIuIE/rs:fit:500:0:0/g:ce/aHR0cHM6Ly90d2lz/dGFydGljbGUuY29t/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDIy/LzEwL1NhbG1hbi1L/aGFuLVRpZ2VyLTMt/bmV3LXBvc3Rlci5q/cGc" alt="">
+                            <span class="movie-list-item-title">Tiger 3</span>
+                            <p class="movie-list-item-desc">Tiger and Zoya are back - to save the country and their family. This time it's personal.</p>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/5.jpg" alt="">
-                            <span class="movie-list-item-title">Avengers</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/696tsstomoVZsbNRUlzcgt1uzib24qlDfw2PKtIHFjE/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/aW5kaWFoZXJhbGQu/Y29tL0ltYWdlU3Rv/cmUvaW1hZ2VzL21v/dmllcy9tb3ZpZXMt/d2FsbHBhcGVycy9T/YW5qdS1Nb3ZpZS1M/YXRlc3QtU3RpbGxz/LS1Qb3N0ZXJzMS5q/cGc" alt="">
+                            <span class="movie-list-item-title">Sanju</span>
+                            <p class="movie-list-item-desc">Biopic of the controversial life of actor Sanjay Dutt: his film career, jail sentence, and personal life.</p>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/6.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/wyc7L7bIHazcGaDBkTwhaJK0u1YSl0eGyywAEhP7eeY/rs:fit:860:0:0/g:ce/aHR0cHM6Ly93d3cu/dGVhaHViLmlvL3Bo/b3Rvcy9mdWxsLzI3/OS0yNzk1NzQwX2Fq/YXktZGV2Z2FuLXNp/bmdoYW0tcG9zdGVy/LmpwZw" alt="">
+                            <span class="movie-list-item-title">Singham 3</span>
+                            <p class="movie-list-item-desc"> Uncompromising police chief Durai Singam battles against a criminal operation dealing in deadly toxic waste.</p>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
-                            <img class="movie-list-item-img" src="img/7.jpg" alt="">
-                            <span class="movie-list-item-title">Her</span>
-                            <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
-                                hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <img class="movie-list-item-img" src="https://imgs.search.brave.com/89MJi6cnRTdRWuxfBw3V6f_4vtWpQBs2SFLxp8_srFo/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9ib2xs/eXdvb2RtYXNjb3Qu/Y29tL3dwLWNvbnRl/bnQvdXBsb2Fkcy8y/MDIwLzAxL1NoZXJz/aGFhaC1Nb3ZpZS1Q/b3N0ZXItZTE1Nzkx/NTY5NTAxODYuanBn" alt="">
+                            <span class="movie-list-item-title">Shershah</span>
+                            <p class="movie-list-item-desc">Shershaah is the story of PVC awardee Indian soldier Capt. Vikram Batra, whose bravery and unflinching courage in chasing the Pakistani soldiers out of Indian territory</p>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                     </div>
                     <i class="fas fa-chevron-right arrow"></i>
@@ -401,49 +119,49 @@ body {
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/9.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/10.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/11.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/12.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/1.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="img/1.jpg" alt="">
                             <span class="movie-list-item-title">Her</span>
                             <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.</p>
-                            <button class="movie-list-item-button">Watch</button>
+                            <button class="movie-list-item-button">Book Tickets</button>
                         </div>
                     </div>
                     <i class="fas fa-chevron-right arrow"></i>
@@ -455,9 +173,9 @@ body {
                 <p class="featured-desc">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto illo dolor
                     deserunt nam assumenda ipsa eligendi dolore, ipsum id fugiat quo enim impedit, laboriosam omnis
                     minima voluptatibus incidunt. Accusamus, provident.</p>
-                <button class="featured-button">WATCH</button>
+                <button class="featured-button">Book Tickets</button>
             </div>
-            
+            <!--aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa-->
             <div class="movie-list-container">
                 <h1 class="movie-list-title">TRENDING EVENTS</h1>
                 <div class="movie-list-wrapper">
@@ -466,13 +184,13 @@ body {
                             <img class="movie-list-item-img" src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-VGh1LCAzMCBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00365092-gsqsalnglx-portrait.jpg" alt="">
                             <span class="movie-list-item-title">Mind Fool India Tour</span>
                             <p class="movie-list-item-desc">With a career traversing Bollywood, music, and comedy, Vir Das has the experience of a lifetime in the entertainment industry under his belt..</p>
-                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                            <a href="file:///C:/Users/Akshat%20Rana/Desktop/CODE/Website%20booking/seats.html"><button class="movie-list-item-button">Book Tickets</button></a>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCA5IERlYw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00335355-urvtjkhzjw-portrait.jpg" alt="">
                             <span class="movie-list-item-title">With love, jaspreet</span>
                             <p class="movie-list-item-desc">After 100 million views on youtube and an Amazon Prime Comedy special, back with a new show.</p>
-                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                            <a href="file:///C:/Users/Akshat%20Rana/Desktop/CODE/Website%20booking/seats.html"><button class="movie-list-item-button">Book Tickets</button></a>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-TW9uLCAyNyBOb3Ygb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00369125-pewtlgggfb-portrait.jpg" alt="">
@@ -480,32 +198,32 @@ body {
                             <p class="movie-list-item-desc">You are Professional & 𝗦𝗺𝗮𝗿𝘁 Photographer only if you have perfect idea on Photography basics.
 
                                 Hyderabad.</p>
-                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button><a>
+                            <a href="file:///C:/Users/Akshat%20Rana/Desktop/CODE/Website%20booking/seats.html"><button class="movie-list-item-button">Book Tickets</button><a>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="https://assets-in.bmscdn.com/nmcms/events/banner/desktop/media-desktop-shaam-e-guftagu-0-2023-11-3-t-3-16-16.jpg" alt="">
                             <span class="movie-list-item-title">Shaam E Guftagu</span>
                             <p class="movie-list-item-desc">Shaam E Guftagu is one of the Most Prominent Event for all The Shayari Lover`s, People who loves Modern Age Relatable Shayari with the Punch of Humour!.</p>
-                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                            <a href="file:///C:/Users/Akshat%20Rana/Desktop/CODE/Website%20booking/seats.html"><button class="movie-list-item-button">Book Tickets</button></a>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_400/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1700118656%2Fotff7afko0l7ai8w6bjh.jpg" alt="">
                             <span class="movie-list-item-title">Chandigarh is Cooking</span>
                             <p class="movie-list-item-desc">Amazing event conducted by Coke Studio at Chandigarh</p>
-                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                            <a href="file:///C:/Users/Akshat%20Rana/Desktop/CODE/Website%20booking/seats.html"><button class="movie-list-item-button">Book Tickets</button></a>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_320/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1700655661%2Fqhncuclxv9roid7vjwbh.jpg" alt="">
                             <span class="movie-list-item-title">Banger Festival</span>
                             <p class="movie-list-item-desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. At
                                 hic fugit similique accusantium.</p>
-                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                            <a href="file:///C:/Users/Akshat%20Rana/Desktop/CODE/Website%20booking/seats.html"><button class="movie-list-item-button">Book Tickets</button></a>
                         </div>
                         <div class="movie-list-item">
                             <img class="movie-list-item-img" src="https://res.cloudinary.com/dwzmsvp7f/image/fetch/q_75,f_auto,w_400/https%3A%2F%2Fmedia.insider.in%2Fimage%2Fupload%2Fc_crop%2Cg_custom%2Fv1696682190%2Fmedh7tq88ndmqait4oam.jpg" alt="">
                             <span class="movie-list-item-title">Jol Fest</span>
                             <p class="movie-list-item-desc">Jol fest x Ravolution Music festival Tour 2nd to 6th Dec</p>
-                            <a href="http://127.0.0.1:5500/guys.html"><button class="movie-list-item-button">Book Tickets</button></a>
+                            <a href="file:///C:/Users/Akshat%20Rana/Desktop/CODE/Website%20booking/seats.html"><button class="movie-list-item-button">Book Tickets</button></a>
                         </div>
                     </div>
                     <i class="fas fa-chevron-right arrow"></i>
@@ -570,43 +288,7 @@ body {
             </div>
         </div>
     </div>
-    <script>
-        const arrows = document.querySelectorAll(".arrow");
-const movieLists = document.querySelectorAll(".movie-list");
-
-arrows.forEach((arrow, i) => {
-  const itemNumber = movieLists[i].querySelectorAll("img").length;
-  let clickCounter = 0;
-  arrow.addEventListener("click", () => {
-    const ratio = Math.floor(window.innerWidth / 270);
-    clickCounter++;
-    if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
-      movieLists[i].style.transform = `translateX(${
-        movieLists[i].computedStyleMap().get("transform")[0].x.value - 300
-      }px)`;
-    } else {
-      movieLists[i].style.transform = "translateX(0)";
-      clickCounter = 0;
-    }
-  });
-
-  console.log(Math.floor(window.innerWidth / 270));
-});
-
-//TOGGLE
-
-const ball = document.querySelector(".toggle-ball");
-const items = document.querySelectorAll(
-  ".container,.movie-list-title,.navbar-container,.sidebar,.left-menu-icon,.toggle"
-);
-
-ball.addEventListener("click", () => {
-  items.forEach((item) => {
-    item.classList.toggle("active");
-  });
-  ball.classList.toggle("active");
-});
-    </script>
+    <script src="app.js"></script>
 </body>
 
 </html>
