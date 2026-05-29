@@ -1,6 +1,6 @@
 <div align="center">
 
-# Hey there, I'm Akshat Rana 👋
+# Hey there, I'm Akshat Rana 👋..
 
 **Full-Stack Developer** · Building scalable web apps & AI-powered systems · Open to SWE Internships
 
